@@ -1,0 +1,38 @@
+extends ../homeLayout
+block headPartialBlock
+    link(rel="stylesheet",href="/stylesheets/home/chatRoom.css")
+    script(src="/socket.io/socket.io.js")
+block bodyPartialBlock
+    .container(class="room-content")
+        .row
+            h1 #{roomTitle}
+            input(type="hidden",id="roomId",value="#{roomId}")
+            input(type="hidden",id="userName",value="#{userName}")
+            span #{roomSubject}
+            hr
+        .row
+            .col-sm-8
+                #divContent
+                div
+                    textarea#inputContent(rows="4",placeholder="请输入要发送的内容")
+                div
+                    .pull-right
+                        button.btn(id="btnSend",class="btn-danger btn-sm",style="width:100px;")
+                            span.glyphicon(class="glyphicon-send")
+                            |&nbsp;发送
+            .col-sm-4
+                fieldset
+                    legend 在线用户列表
+                        span(id="onlineTip",style="font-size:12px;color:red;")
+                    ul#userList
+
+    footer
+        .container
+            p.text-center &copy;东北师范大学软件学院2014级戚媛
+
+block footPartialBlock
+    script(src="/javascripts/home/chatRoom.js")
+    script.
+      $(function(){
+        chatRoom.init();
+      });

@@ -1,0 +1,46 @@
+extends ../adminLayout
+block headPartialBlock
+    link(rel="stylesheet",href="/stylesheets/admin/unicorn.main.css")
+    link(rel="stylesheet",href="/stylesheets/admin/unicorn.grey.css",class="skin-color")
+block bodyPartialBlock
+    #header
+        h1
+            a(href="/admin/",style="color:yellow;") 聊天室管理系统
+    #user-nav(class="navbar")
+        ul.nav(class="btn-group")
+            li.btn(class="btn-info")
+                a#logout(title="",href="/admin/login")
+                    span(class="glyphicon glyphicon-share-alt")
+                    span(class="text",style="color:#fff;") 注销
+    #sidebar
+        ul
+            li.active
+                a(href="test1")
+                    i(class="glyphicon glyphicon-home")
+                    span 系统看板
+            li.submenu(class="open")
+                a(href="javascript:void(0);")
+                    i.glyphicon(class="glyphicon-list")
+                    span 二级功能页
+                    span.label 3
+                ul
+                    li
+                        a(href="menu1") Menu1
+                    li
+                        a(href="menu2") Menu2
+            li
+                a(href="./roomList")
+                    i(class="glyphicon glyphicon-tint")
+                    span 聊天室管理
+    #content
+        #content-header
+            h1 后台管理首页
+        #breadcrumb
+            a.tip-bottom(href="#",title="#")
+                i.glyphicon(class="glyphicon-home")
+                | 首页
+            a.current(href="#") 看板
+block footPartialBlock
+    script(src="/javascripts/admin/index.js")
+    script.
+      index.init();

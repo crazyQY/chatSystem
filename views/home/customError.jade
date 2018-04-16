@@ -1,0 +1,17 @@
+extends ../homeLayout
+block bodyPartialBlock
+    input(type="hidden",value="#{type}",id="errTypeId")
+    div(id="divShowMsg")
+block footPartialBlock
+    script.
+        $(function(){
+            var errType=$('#errTypeId').val();
+            var showMsg;
+            switch(errType){
+                case 'notLogin':
+                    showMsg='<span>您还未登录，请先登录</span>'+
+                    '<a href="/home/index">回首页</a>';
+                break;
+            }
+            $('#divShowMsg').html(showMsg);
+        });

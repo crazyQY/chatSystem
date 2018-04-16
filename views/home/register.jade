@@ -1,0 +1,26 @@
+extends ../homeLayout
+block headPartialBlock
+    link(rel="stylesheet",href="/stylesheets/homeStyle.css")
+block bodyPartialBlock
+    .container
+        .col-sm-8(class="col-sm-offset-2",id="register-container")
+            form.form-horizontal(action="/home/register",method="post")
+                .form-group
+                    label.control-label(class="col-sm-4") 账户：
+                    .col-sm-7
+                        input.form-control(type="text",name="account",placeholder="请输入要注册的账户名称！")
+                .form-group
+                    label.control-label(class="col-sm-4") 昵称：
+                    .col-sm-7
+                        input.form-control(type="text",name="nick",placeholder="请输入昵称！")
+                .form-group
+                    label.control-label(class="col-sm-4") 密码：
+                    .col-sm-7
+                        input.form-control(type="password",name="pw",placeholder="请输入账户密码！")
+                .form-group
+                    label.control-label(class="col-sm-4") 确认密码：
+                    .col-sm-7
+                        input.form-control(type="password",name="pw2",placeholder="请再次输入账户密码！")
+                .form-group
+                    .col-sm-10(class="col-sm-offset-1")
+                        button.btn(class="btn-primary row-full") 注册

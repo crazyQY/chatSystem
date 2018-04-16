@@ -1,0 +1,78 @@
+extends ../homeLayout
+block headPartialBlock
+    link(rel="stylesheet",href="/stylesheets/homeStyle.css")
+block bodyPartialBlock
+    header.navbar(class="navbar-inverse navbar-fixed-top",role="banner")
+        .container
+            .navbar-header
+                button.navbar-toggle(type="button",data-toggle="collapse",data-target=".bs-navbar-collapse")
+                    span.sr-only Toggle Navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a(hreg="/",class="navbar-brand") 匿名聊天室
+            nav.collapse(class="navbar-collapse",role="navigation")
+                ul.nav(class="navbar-nav")
+                    li.active
+                        a(href="/") 首页
+                    //li
+                    //    a(href="/") 菜单一
+                    //li
+                    //    a(href="/") 菜单二
+                    //li
+                    //    a(href="/") 菜单三
+                ul.nav(class="navbar-nav navbar-right")
+                    li
+                        a(href="/home/register",style="color:yellow;") #{user==null?'注册':''}
+    section(class="body-center")
+        .container
+            .row
+                .col-xs-8
+                    each room,i in data
+                        if(i%3==0)
+                            .row
+                        .col-xs-4
+                            .rect-normal(class="text-center")
+                                a(href="/home/room/#{room._id}")
+                                    img(src="#{room.photoUrl.replace('./public','')}",alt="")
+                                    div #{room.name}
+
+                .col-xs-4(class="container_right")
+                    .row(class="login-form")
+                        form.form-horizontal(action="/home/login",method="post")
+                            if(user)
+                                .form-group
+                                    label.control-label(class="col-sm-4") 账户：
+                                    .col-sm-7
+                                        p.form-control-static #{user.name}
+
+                                .form-group
+                                    label.control-label(class="col-sm-4") 昵称：
+                                    .col-sm-7
+                                        p.form-control-static #{user.nick}
+                                .form-group
+                                    .col-sm-4(class="col-sm-offset-4")
+                                        button.btn(type="submit",name="logout",value="true",class="btn-danger btn-xs") 注销
+                            else
+                                .form-group
+                                    label.control-label(class="col-sm-4") 账户：
+                                    .col-sm-7
+                                        input.form-control(name="username",class="input-sm",placeholder="请输入账户名称")
+                                .form-group
+                                    label.control-label(class="col-sm-4") 密码：
+                                    .col-sm-7
+                                        input.form-control(type="password",name="userpass",class="input-sm",placeholder="请输入账户密码")
+                                .form-group
+                                    .col-sm-4(class="col-sm-offset-4")
+                                        button.btn(class="btn-danger btn-xs") 登录
+                    .row(class="info-container")
+                        | 信息发布区域
+                        marquee 暂无信息发布
+
+    footer(class="navbar-fixed-bottom")
+        .container
+            p.text-center &copy;东北师范大学软件工程2014级戚媛
+block footPartialBlock
+    script(src="/javascripts/home/index.js")
+    script.
+      index.init();

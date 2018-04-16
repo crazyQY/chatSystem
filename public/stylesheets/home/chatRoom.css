@@ -1,0 +1,59 @@
+body{
+    background: lightgray;
+    background: url(../../images/bg.png);
+    background-size:cover;
+    background-attachment: fixed;
+}
+.container{
+    background: transparent;
+}
+.room-content{
+    margin-bottom: 5px;
+}
+#divContent{
+    height: 380px;
+    border: 1px solid purple;
+    overflow-y:auto;
+}
+#divContent .toast{
+    color:gray;
+    font-size: 12px;
+    font-family: '微软雅黑';
+    background: lightgreen;
+    padding-left: 5px;
+    border-bottom: 1px solid purple;
+}
+#divContent .chatContent{
+    padding: 5px;
+}
+#divContent .chatContent .author{
+    color:#ffff00;
+    font-weight: bold;
+}
+#divContent .chatContent .date{
+    color:green;
+}
+#divContent .chatContent .msg{
+    border: 1px solid #808080;
+    border-radius: 5px;
+    color: #000000;
+    width: 50%;
+}
+#inputContent{
+    margin-top: 5px;
+    width: 100%;
+    resize: none;
+    border: 1px solid purple;
+}
+#userList{
+    height: 420px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 5px;
+}
+#userList li{
+    list-style: none;
+    border:1px solid purple;
+    margin: 5px;
+    padding-left: 5px;
+}

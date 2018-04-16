@@ -1,0 +1,60 @@
+#content-header
+    h1 聊天室管理
+#breadcrumb
+    a.tip-bottom(href="#",title="#")
+        i.glyphicon(class="glyphicon-home")
+        | 首页
+    a.current(href="#") 聊天室管理
+.panel(class="panel-primary")
+    .panel-heading 聊天室列表
+        span#addRoom(class="btn btn-danger btn-xs pull-right")
+            span.glyphicon(class="glyphicon-play")
+            |添加聊天室
+    .panel-body
+    table.table(class="table-default table-bordered")
+        tr
+            th 头像
+            th 名称
+            th 最大人数
+            th 主题
+            th 创建时间
+            th 状态
+            th 操作
+        each room,i in data
+            tr
+                td
+                    img(src="#{room.photoUrl}",alt="",style="width:50px;height:50px;")
+                td=room.name
+                td=room.maxSize
+                td=room.subject
+                td=room.createTime
+                td=room.isEnable
+                td
+                    span.btn(class="btn-danger btn-xs edit-room",data-id="#{room._id}") 编辑
+                    span.btn(class="btn-danger btn-xs del-room",data-id="#{room._id}") 删除
+#add_room(style="display:none;")
+    .closeBtn(id="addClose") x
+    form.form-horizontal(style="width:450px;",action="/admin/addroom",method="post")
+        .form-group
+            label(class="col-sm-3 control-label") 名称：
+            .col-sm-9
+                input.form-control(placeholder="请输入聊天室名称",id="roomname",name="roomname")
+        .form-group
+            label(class="col-sm-3 control-label") 最大人数：
+            .col-sm-9
+                input.form-control(placeholder="请输入最大人数",id="roommaxsize",name="roommaxsize")
+        .form-group
+            label(class="col-sm-3 control-label") 主题：
+            .col-sm-9
+                textarea.form-control(placeholder="请输入聊天主题",id="roomsubject",name="roomsubject")
+        .form-group
+            label(class="col-sm-3 control-label") 头像：
+            .col-sm-9
+                input.form-control(placeholder="聊天室头像地址",id="roomphoto",name="roomphoto")
+                //input.form-control(type="file",placeholder="请选择聊天室头像",id="roomphoto",name="roomphoto")
+        .form-group
+            .col-sm-4(class="col-sm-offset-4")
+                button(type="submit",class="btn btn-danger")
+                    span.glyphicon(class="glyphicon-adjust")
+                    |&nbsp;添加聊天室
+#edit_room(style="display:none;")

@@ -1,0 +1,38 @@
+.body-center {
+  margin-top: 60px;
+}
+
+.rect-normal {
+  border: 1px solid green;
+  height: 150px;
+  margin-bottom: 5px;
+}
+.rect-normal img{
+  width: 100px;
+  height: 80%;
+}
+footer{
+  background:lightgray;
+}
+.login-form{
+  border: 1px solid green;
+  padding-top: 10px;
+}
+/*注册页面样式*/
+#register-container{
+  border:1px solid green;
+  margin-top: 150px;
+  padding-top: 15px;
+}
+.row-full{
+  width: 100%;
+}
+/*首页样式*/
+.navbar-brand{
+  cursor: pointer;
+}
+.info-container{
+  border: 1px solid green;
+  height: 310px;
+  margin-top:10px;
+}
